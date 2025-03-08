@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        button { margin: 10px; padding: 10px 15px; cursor: pointer; }
+        #data-container { margin-top: 20px; }
+        .item { padding: 5px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <h2>Pagination 방식 비교</h2>
+
+    <button onclick="loadOffsetPagination()">Offset Pagination 불러오기</button>
+    <button onclick="loadCursorPagination()">Cursor Pagination 불러오기</button>
+
+    <div id="data-container"></div>
+
+    <script>
+        let offsetPage = 1;
+        let cursor = 0;
+        const limit = 10;
+
+        async function loadOffsetPagination() {
+            const response = await fetch(`http://localhost:3000/offset-pagination?page=${offsetPage}&limit=${limit}`);
+            const data = await response.json();
+            
+            displayData(data.data, "Offset Pagination 결과");
+            offsetPage++; // 다음 페이지 증가
+        }
+
+        async function loadCursorPagination() {
+            const response = await fetch(`http://localhost:3000/cursor-pagination?cursor=${cursor}&limit=${limit}`);
+            const data = await response.json();
+
+            displayData(data.data, "Cursor Pagination 결과");
+            cursor = data.nextCursor || cursor; // 다음 cursor 업데이트
+        }
+
+        function displayData(items, title) {
+            const container = document.getElementById("data-container");
+            const html = items.map(item => `<div class="item">${item.id} - ${item.name}</div>`).join("");
+
+            container.innerHTML = `<h3>${title}</h3>` + html;
+        }
+    </script>
+
+</body>
+</html>
