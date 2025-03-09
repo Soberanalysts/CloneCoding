@@ -1,3 +1,5 @@
 1. offset pagenation (직관적)
+    SQL에서 offset과 limit으로 구현
 
 2. Cursor pagenation(정확하고 빠름)
+    
