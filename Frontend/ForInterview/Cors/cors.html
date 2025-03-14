@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS 오류 예제</title>
+</head>
+<body>
+    <h1>CORS 테스트</h1>
+    <button id="fetchData">데이터 가져오기</button>
+    <p id="output"></p>
+
+    <script>
+        document.getElementById("fetchData").addEventListener("click", () => {
+            fetch("http://backend.com/data") // 다른 도메인의 API 요청
+                .then(response => response.json()) // JSON 변환
+                .then(data => {
+                    document.getElementById("output").innerText = JSON.stringify(data);
+                })
+                .catch(error => {
+                    console.error("CORS 오류 발생:", error);
+                    document.getElementById("output").innerText = "CORS 오류 발생!";
+                });
+        });
+    </script>
+</body>
+</html>
