@@ -12,7 +12,8 @@
 
     <script>
         document.getElementById("fetchData").addEventListener("click", () => {
-            fetch("http://backend.com/data") // 다른 도메인의 API 요청
+            // fetch("http://backend.com/data") // 다른 도메인의 API 요청
+            fetch("http://localhost:3000/data") // 다른 도메인의 API 요청
                 .then(response => response.json()) // JSON 변환
                 .then(data => {
                     document.getElementById("output").innerText = JSON.stringify(data);
