@@ -9,27 +9,33 @@
 <body>
 
     <h2>📈 ApexCharts - 라인 차트</h2>
-    <button id="trans">Trans
-    </button>
+    <button id="trans">Trans</button>
     <div id="chart"></div>
 
-    <script src="linechart.js">
-        // var options = {
-        //     chart: {
-        //         type: 'line',
-        //         height: 350
-        //     },
-        //     series: [{
-        //         name: '판매량',
-        //         data: [10, 40, 35, 50, 49, 60, 70, 91, 125]
-        //     }],
-        //     xaxis: {
-        //         categories: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월']
-        //     }
-        // };
+    <script>
+        let isLineChart = true; // 현재 차트가 Line Chart인지 여부
+        let scriptElement = document.createElement("script");
 
-        // var chart = new ApexCharts(document.querySelector("#chart"), options);
-        // chart.render();
+        function loadScript(filename) {
+            // 기존 스크립트 제거
+            if (scriptElement) {
+                scriptElement.remove();
+            }
+
+            // 새로운 스크립트 생성 후 추가
+            scriptElement = document.createElement("script");
+            scriptElement.src = filename;
+            document.body.appendChild(scriptElement);
+        }
+
+        // 초기 linechart.js 로드
+        loadScript("linechart.js");
+
+        // 버튼 클릭 시 linechart.js <-> barchart.js 전환
+        document.getElementById("trans").addEventListener("click", function () {
+            isLineChart = !isLineChart;
+            loadScript(isLineChart ? "linechart.js" : "barchart.js");
+        });
     </script>
 
 </body>
