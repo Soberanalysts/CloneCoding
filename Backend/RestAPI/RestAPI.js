@@ -29,3 +29,8 @@ app.get("/deleteUser", (req, res) => {
 });
 
 app.listen(3000, () => console.log("RestAPI Server running on port 3000"));
+
+// # 비효율적인 방식 (모두 GET 요청)
+// GET http://localhost:3000/getUser?id=1
+// GET http://localhost:3000/addUser?name=John
+// GET http://localhost:3000/deleteUser?id=2

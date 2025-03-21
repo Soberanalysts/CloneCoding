@@ -41,3 +41,9 @@ app.delete("/users/:id", (req, res) => {
 });
 
 app.listen(4000, () => console.log("RestfulAPI Server running on port 4000"));
+
+// # RESTful한 방식 (HTTP 메서드 활용)
+// GET http://localhost:4000/users/1  # 특정 사용자 조회
+// POST http://localhost:4000/users   # 새로운 사용자 추가 (JSON body 필요)
+// PUT http://localhost:4000/users/2  # 특정 사용자 수정 (JSON body 필요)
+// DELETE http://localhost:4000/users/2  # 특정 사용자 삭제
