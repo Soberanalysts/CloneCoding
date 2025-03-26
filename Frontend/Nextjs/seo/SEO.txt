@@ -10,3 +10,21 @@ getStaticProps + getStaticPaths 조합 덕분에,
 
 🔹 빠르게 로드됨 (성능 ↑)
 🔹 크롤러가 바로 HTML 읽을 수 있음 (SEO 점수 ↑)
+
+
+✅ 2. 동적 URL 슬러그 지원 (SEO-friendly URLs)
+/posts/best-coffee-in-seoul ← 이건 정말 예쁜 SEO-friendly URL이야
+
+사용자가 보기에도 좋고, 구글이 키워드 파악하기도 쉬움
+
+✅ 3. <Head> 태그로 메타데이터 커스터마이즈
+이 부분이 SEO 핵심 포인트 중 하나야!
+
+페이지마다 title, meta description을 동적으로 바꿔주는 구조라
+
+구글 검색 결과에 개별 포스트마다 최적화된 정보가 뜸
+
+✅ 4. 빠른 페이지 속도 (Next.js 최적화)
+Next.js는 자동 코드 분할, 이미지 최적화, 라우트 기반 캐싱 등 덕분에
+
+SEO에서 중요한 속도 점수를 잘 챙길 수 있어
