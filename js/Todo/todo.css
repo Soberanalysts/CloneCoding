@@ -1,0 +1,4 @@
+#historyList {
+    list-style: none;
+    padding-left: 0; /* 왼쪽 들여쓰기 제거 (선택사항) */
+  }
