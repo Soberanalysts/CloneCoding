@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO 채팅 예제</title>
+  <style>
+    body { font-family: Arial; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <h2>💬 실시간 채팅</h2>
+  <ul id="messages"></ul>
+
+  <form id="form">
+    <input id="input" autocomplete="off" placeholder="메시지를 입력하세요" />
+    <button>보내기</button>
+  </form>
+
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script>
+    const socket = io("http://localhost:3000");
+    // const socket = io();
+
+    const form = document.getElementById("form");
+    const input = document.getElementById("input");
+    const messages = document.getElementById("messages");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit("chat message", input.value); // 서버로 메시지 전송
+        input.value = "";
+      }
+    });
+    socket.on("set username", (name) => {
+  socket.username = name;
+  console.log("사용자명:", socket.username)
+});
+
+    socket.on("chat message", (msg) => {
+      const li = document.createElement("li");
+      li.textContent = msg;
+      messages.appendChild(li);
+    });
+  </script>
+</body>
+</html>
