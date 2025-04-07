@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>handler</title>
+</head>
+<body>
+    <button id="myBtn">눌러봐!</button>
+
+    <script>
+        // ✅ 이 함수가 핸들러야! 클릭이 발생하면 실행돼
+        function handleClick() {
+            alert("버튼이 눌렸어요!");
+        }
+
+        // ✅ 이벤트와 핸들러 연결
+        const btn = document.getElementById("myBtn");
+        btn.addEventListener("click", handleClick);
+    </script>
+</body>
+</html>
