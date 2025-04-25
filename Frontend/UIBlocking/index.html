@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UI Blocking 예제</title>
+</head>
+<body>
+  <h2>⏳ 버튼 눌러봐!</h2>
+  <button id="blockBtn">블로킹 시작</button>
+  <p id="status">아직 클릭 안됨</p>
+
+  <script>
+    /*document.getElementById("blockBtn").addEventListener("click", () => {
+        document.getElementById("status").textContent = "처리 중...";
+      
+        // ✅ setTimeout을 써서 브라우저에 '틈'을 줌
+        setTimeout(() => {
+          // CPU 작업은 여전히 5초
+          const start = Date.now();
+          while (Date.now() - start < 5000) {}
+      
+          document.getElementById("status").textContent = "✅ 완료됨";
+        }, 0);
+      });*/
+    document.getElementById("blockBtn").addEventListener("click", () => {
+      document.getElementById("status").textContent = "⏳ 처리 중... UI 멈춤";
+
+      // ❌ 아주 오래 걸리는 동기 연산 (UI가 멈춤)
+      const start = Date.now();
+      while (Date.now() - start < 5000) {
+        // 5초 동안 CPU 계속 사용
+      }
+
+      document.getElementById("status").textContent = "✅ 완료됨";
+    });
+  </script>
+</body>
+</html>
